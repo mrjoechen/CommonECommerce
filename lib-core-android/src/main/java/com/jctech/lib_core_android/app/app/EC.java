@@ -1,4 +1,4 @@
-package com.jctech.lib_ec_android.app;
+package com.jctech.lib_core_android.app.app;
 
 import android.content.Context;
 

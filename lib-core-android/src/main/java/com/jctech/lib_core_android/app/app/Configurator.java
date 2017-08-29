@@ -1,14 +1,19 @@
-package com.jctech.lib_ec_android.app;
+package com.jctech.lib_core_android.app.app;
 
+import com.joanzapata.iconify.IconFontDescriptor;
+import com.joanzapata.iconify.Iconify;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created by CHENQIAO on 2017/8/27.
  */
 
-public class Configurator {
+public final class Configurator {
 
     private static final HashMap<String, Object> CONFIGS = new HashMap<>();
+    private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList();
 
     /**
      * 静态内部类，实现线程安全懒加载单例模式
@@ -27,6 +32,7 @@ public class Configurator {
     }
 
     public final Configurator configure(){
+        initializIcons();
         CONFIGS.put(ConfigType.CONFIG_READY.name(), true);
         return this;
     }
@@ -37,6 +43,20 @@ public class Configurator {
 
     public final Configurator withApiHost(String host){
         CONFIGS.put(ConfigType.API_HOST.name(), host);
+        return this;
+    }
+
+    private void initializIcons(){
+        if (ICONS.size() > 0){
+            Iconify.IconifyInitializer iconifyInitializer = Iconify.with(ICONS.get(0));
+            for (int i = 1; i<ICONS.size();i++){
+                iconifyInitializer.with(ICONS.get(i));
+            }
+        }
+    }
+
+    public final Configurator withIcons(IconFontDescriptor icon){
+        ICONS.add(icon);
         return this;
     }
 
@@ -51,7 +71,6 @@ public class Configurator {
     final <T> T getConfiguration(String key){
         checkConfiguation();
         return (T) CONFIGS.get(key);
-
     }
 
 }
