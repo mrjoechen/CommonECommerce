@@ -2,7 +2,7 @@ package com.jctech.commonecommerce;
 
 import android.app.Application;
 
-import com.jctech.lib_core_android.app.app.EC;
+import com.jctech.lib_core_android.app.EC;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 /**

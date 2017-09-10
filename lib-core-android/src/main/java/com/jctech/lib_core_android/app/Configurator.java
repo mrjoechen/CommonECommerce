@@ -1,4 +1,4 @@
-package com.jctech.lib_core_android.app.app;
+package com.jctech.lib_core_android.app;
 
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;

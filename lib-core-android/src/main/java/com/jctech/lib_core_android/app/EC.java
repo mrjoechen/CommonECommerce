@@ -1,4 +1,4 @@
-package com.jctech.lib_core_android.app.app;
+package com.jctech.lib_core_android.app;
 
 import android.content.Context;
 
@@ -16,7 +16,7 @@ public class EC {
 
     }
 
-    private static HashMap<String, Object> getConfigurations(){
+    public static HashMap<String, Object> getConfigurations(){
         return Configurator.getInstance().getCONFIGS();
     }
 }
