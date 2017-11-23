@@ -5,8 +5,5 @@ package com.jctech.lib_core_android.delegate;
  */
 
 public abstract class PermissionCheckerDelegate extends BaseDelegate {
-    @Override
-    public Object setLayout() {
-        return null;
-    }
+
 }

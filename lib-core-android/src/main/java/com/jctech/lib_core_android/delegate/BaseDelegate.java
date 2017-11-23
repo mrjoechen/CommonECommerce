@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 
 /**
@@ -14,7 +16,11 @@ import me.yokeyword.fragmentation_swipeback.SwipeBackFragment;
 
 public abstract class BaseDelegate extends SwipeBackFragment{
 
+    private Unbinder unbinder;
+
     public abstract Object setLayout();
+
+    public abstract void onBindView(@Nullable Bundle savedInstanceState, View rootView);
 
     @Nullable
     @Override
@@ -28,7 +34,8 @@ public abstract class BaseDelegate extends SwipeBackFragment{
         }
 
         if (rootView!=null){
-            
+            unbinder = ButterKnife.bind(this, rootView);
+            onBindView(savedInstanceState, rootView);
         }
 
         return rootView;
@@ -37,5 +44,8 @@ public abstract class BaseDelegate extends SwipeBackFragment{
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (unbinder!=null){
+            unbinder.unbind();
+        }
     }
 }

@@ -5,13 +5,19 @@ import com.joanzapata.iconify.Iconify;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.WeakHashMap;
 
 /**
  * Created by CHENQIAO on 2017/8/27.
  */
 
+
+/**
+ * 配置文件获取和存储
+ */
 public final class Configurator {
 
+//    private static final WeakHashMap<String, Object> CONFIG = new WeakHashMap<>();//不使用是可以及时被回收
     private static final HashMap<String, Object> CONFIGS = new HashMap<>();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList();
 
@@ -68,9 +74,9 @@ public final class Configurator {
     }
 
     @SuppressWarnings("unchecked")
-    final <T> T getConfiguration(String key){
+    final <T> T getConfiguration(Enum<ConfigType> key){
         checkConfiguation();
-        return (T) CONFIGS.get(key);
+        return (T) CONFIGS.get(key.name());
     }
 
 }

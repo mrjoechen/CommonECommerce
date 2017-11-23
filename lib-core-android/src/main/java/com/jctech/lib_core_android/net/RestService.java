@@ -1,4 +1,4 @@
-package net;
+package com.jctech.lib_core_android.net;
 
 import java.util.Map;
 
