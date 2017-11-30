@@ -10,9 +10,12 @@ import com.jctech.lib_core_android.net.callback.RequestCallbacks;
 import com.jctech.lib_core_android.ui.ECLoader;
 import com.jctech.lib_core_android.ui.LoaderStyle;
 
+import java.io.File;
 import java.util.Map;
 import java.util.WeakHashMap;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 
@@ -26,13 +29,14 @@ public class RestClient {
 //    private final Map<String, Object> PARAMS;
 
     private static final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
-    private final IRequest IRequest;
-    private final ISuccess ISuccess;
-    private final IFailure IFailure;
-    private final IError IError;
-    private final RequestBody REQUESTBODY;
+    private final IRequest IREQUEST;
+    private final ISuccess ISUCCESS;
+    private final IFailure IFAILURE;
+    private final IError IERROR;
+    private final RequestBody BODY;
+    private final File FILE;
 
-    private LoaderStyle loaderStyle;
+    private final LoaderStyle loaderStyle;
     private final Context context;
 
 
@@ -44,16 +48,18 @@ public class RestClient {
                       IError iError,
                       RequestBody mRequestbody,
                       Context context,
-                      LoaderStyle loaderStyle) {
+                      LoaderStyle loaderStyle,
+                      File file) {
         this.URL = mUrl;
         PARAMS.putAll(mParams);
-        this.IRequest = iRequet;
-        this.ISuccess = iSuccess;
-        this.IFailure = iFailure;
-        this.IError = iError;
-        this.REQUESTBODY = mRequestbody;
+        this.IREQUEST = iRequet;
+        this.ISUCCESS = iSuccess;
+        this.IFAILURE = iFailure;
+        this.IERROR = iError;
+        this.BODY = mRequestbody;
         this.context = context;
         this.loaderStyle = loaderStyle;
+        this.FILE = file;
     }
 
     public static RestClientBuilder builder() {
@@ -64,8 +70,8 @@ public class RestClient {
 
         RestService restService = RestCreator.getRestService();
         Call<String> call = null;
-        if (IRequest != null) {
-            IRequest.onRequestStart();
+        if (IREQUEST != null) {
+            IREQUEST.onRequestStart();
         }
         if (loaderStyle != null) {
             ECLoader.showLoading(context, loaderStyle);
@@ -78,11 +84,24 @@ public class RestClient {
             case POST:
                 call = restService.post(URL, PARAMS);
                 break;
+            case POST_RAW:
+                call = restService.postRaw(URL, BODY);
+                break;
             case PUT:
                 call = restService.put(URL, PARAMS);
                 break;
+            case PUT_RAW:
+                call = restService.putRaw(URL, BODY);
+                break;
             case DELETE:
                 call = restService.delete(URL, PARAMS);
+                break;
+            case UPLOAD:
+                final RequestBody requestBody = RequestBody.create(MediaType.parse(MultipartBody.FORM.toString()), FILE);
+
+                final MultipartBody.Part body = MultipartBody.Part.createFormData("file", FILE.getName(), requestBody);
+
+                call = RestCreator.getRestService().upload(URL, body);
                 break;
             default:
                 break;
@@ -96,7 +115,7 @@ public class RestClient {
     }
 
     private RequestCallbacks getRequestCallbacks() {
-        return new RequestCallbacks(IRequest, ISuccess, IFailure, IError, loaderStyle);
+        return new RequestCallbacks(IREQUEST, ISUCCESS, IFAILURE, IERROR, loaderStyle);
     }
 
     public final void get() {
@@ -104,11 +123,27 @@ public class RestClient {
     }
 
     public final void post() {
-        request(HTTP_METHOD.POST);
+        if (BODY == null) {
+            request(HTTP_METHOD.POST);
+        } else {
+            if (!PARAMS.isEmpty()) {
+                throw new RuntimeException("request params must be null");
+            }
+            request(HTTP_METHOD.POST_RAW);
+        }
     }
 
     public final void put() {
-        request(HTTP_METHOD.PUT);
+
+        if (BODY == null) {
+            request(HTTP_METHOD.PUT);
+        } else {
+            if (!PARAMS.isEmpty()) {
+                throw new RuntimeException("request params must be null");
+            }
+            request(HTTP_METHOD.PUT_RAW);
+
+        }
     }
 
     public final void delete() {

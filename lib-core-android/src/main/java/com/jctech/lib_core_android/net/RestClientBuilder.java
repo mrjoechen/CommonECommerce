@@ -8,6 +8,7 @@ import com.jctech.lib_core_android.net.callback.IRequest;
 import com.jctech.lib_core_android.net.callback.ISuccess;
 import com.jctech.lib_core_android.ui.LoaderStyle;
 
+import java.io.File;
 import java.util.Map;
 import java.util.WeakHashMap;
 
@@ -29,6 +30,7 @@ public class RestClientBuilder {
     private RequestBody mRequestbody;
     private Context mContext;
     private LoaderStyle mLoadStyle;
+    private File mFile;
 
     RestClientBuilder() {
     }
@@ -92,9 +94,19 @@ public class RestClientBuilder {
         return this;
     }
 
+    public final RestClientBuilder file(File file){
+        this.mFile = file;
+        return this;
+    }
+
+    public final RestClientBuilder file(String filePath){
+        this.mFile = new File(filePath);
+        return this;
+    }
+
 
     public RestClient build() {
-        return new RestClient(mUrl, PARAMS, mRequet, mSuccess, mFailure, mError, mRequestbody, mContext, mLoadStyle);
+        return new RestClient(mUrl, PARAMS, mRequet, mSuccess, mFailure, mError, mRequestbody, mContext, mLoadStyle, mFile);
     }
 
 
