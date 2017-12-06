@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/lib-compiler/lib-compiler.iml" filepath="$PROJECT_DIR$/lib-compiler/lib-compiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib-core-android/lib-core-android.iml" filepath="$PROJECT_DIR$/lib-core-android/lib-core-android.iml" />
       <module fileurl="file://$PROJECT_DIR$/lib-ec-android/lib-ec-android.iml" filepath="$PROJECT_DIR$/lib-ec-android/lib-ec-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib-ui/lib-ui.iml" filepath="$PROJECT_DIR$/lib-ui/lib-ui.iml" />
     </modules>
   </component>
 </project>

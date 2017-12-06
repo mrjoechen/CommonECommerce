@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/lib-compiler" />
             <option value="$PROJECT_DIR$/lib-core-android" />
             <option value="$PROJECT_DIR$/lib-ec-android" />
+            <option value="$PROJECT_DIR$/lib-ui" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
