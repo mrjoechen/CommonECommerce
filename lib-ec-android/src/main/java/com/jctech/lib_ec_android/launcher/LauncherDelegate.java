@@ -55,6 +55,15 @@ public class LauncherDelegate extends ECDelategate implements BaseTimerTask.ITim
         initTimer();
     }
 
+    //判断是否显示滑动启动页
+    private void checkIsShowScroll() {
+        if (!ECPreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
+            getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
+        } else {
+            //检查用户登录状态
+
+        }
+    }
 
     @Override
     public void onTimer() {
