@@ -7,6 +7,7 @@ import com.jctech.lib_core_android.net.callback.IFailure;
 import com.jctech.lib_core_android.net.callback.IRequest;
 import com.jctech.lib_core_android.net.callback.ISuccess;
 import com.jctech.lib_core_android.net.callback.RequestCallbacks;
+import com.jctech.lib_core_android.net.download.DownloadHandler;
 import com.jctech.lib_core_android.ui.ECLoader;
 import com.jctech.lib_core_android.ui.LoaderStyle;
 
@@ -17,6 +18,7 @@ import java.util.WeakHashMap;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
+import okhttp3.internal.http.HttpMethod;
 import retrofit2.Call;
 
 /**
@@ -35,9 +37,11 @@ public class RestClient {
     private final IError IERROR;
     private final RequestBody BODY;
     private final File FILE;
-
-    private final LoaderStyle loaderStyle;
-    private final Context context;
+    private final String DOWNLOAD_DIR;
+    private final LoaderStyle LOADERSTYLE;
+    private final String NAME;
+    private final Context CONTEXT;
+    private final String EXTENSION;
 
 
     public RestClient(String mUrl,
@@ -49,7 +53,10 @@ public class RestClient {
                       RequestBody mRequestbody,
                       Context context,
                       LoaderStyle loaderStyle,
-                      File file) {
+                      String downloadDir,
+                      String name,
+                      File file,
+                      String extension) {
         this.URL = mUrl;
         PARAMS.putAll(mParams);
         this.IREQUEST = iRequet;
@@ -57,9 +64,12 @@ public class RestClient {
         this.IFAILURE = iFailure;
         this.IERROR = iError;
         this.BODY = mRequestbody;
-        this.context = context;
-        this.loaderStyle = loaderStyle;
+        this.CONTEXT = context;
+        this.LOADERSTYLE = loaderStyle;
+        this.DOWNLOAD_DIR = downloadDir;
+        this.NAME = name;
         this.FILE = file;
+        this.EXTENSION = extension;
     }
 
     public static RestClientBuilder builder() {
@@ -73,8 +83,8 @@ public class RestClient {
         if (IREQUEST != null) {
             IREQUEST.onRequestStart();
         }
-        if (loaderStyle != null) {
-            ECLoader.showLoading(context, loaderStyle);
+        if (LOADERSTYLE != null) {
+            ECLoader.showLoading(CONTEXT, LOADERSTYLE);
         }
         switch (http_method) {
 
@@ -98,10 +108,8 @@ public class RestClient {
                 break;
             case UPLOAD:
                 final RequestBody requestBody = RequestBody.create(MediaType.parse(MultipartBody.FORM.toString()), FILE);
-
                 final MultipartBody.Part body = MultipartBody.Part.createFormData("file", FILE.getName(), requestBody);
-
-                call = RestCreator.getRestService().upload(URL, body);
+                call = restService.upload(URL, body);
                 break;
             default:
                 break;
@@ -115,7 +123,7 @@ public class RestClient {
     }
 
     private RequestCallbacks getRequestCallbacks() {
-        return new RequestCallbacks(IREQUEST, ISUCCESS, IFAILURE, IERROR, loaderStyle);
+        return new RequestCallbacks(IREQUEST, ISUCCESS, IFAILURE, IERROR, LOADERSTYLE);
     }
 
     public final void get() {
@@ -150,5 +158,14 @@ public class RestClient {
         request(HTTP_METHOD.DELETE);
     }
 
+    public final void upload() {
+        request(HTTP_METHOD.UPLOAD);
+    }
+
+    public final void download() {
+        new DownloadHandler(URL, IREQUEST, DOWNLOAD_DIR, EXTENSION, NAME,
+                ISUCCESS, IFAILURE, IERROR)
+                .handleDownload();
+    }
 
 }
