@@ -21,7 +21,9 @@ import butterknife.OnClick;
  * Created by CHENQIAO on 2017/12/11.
  */
 
-public class SignUpDelegate extends ECDelategate{
+public class SignUpDelegate extends ECDelategate {
+
+
     @BindView(R2.id.edit_sign_up_name)
     TextInputEditText mName = null;
     @BindView(R2.id.edit_sign_up_email)
