@@ -23,7 +23,6 @@ import butterknife.OnClick;
 
 public class SignUpDelegate extends ECDelategate {
 
-
     @BindView(R2.id.edit_sign_up_name)
     TextInputEditText mName = null;
     @BindView(R2.id.edit_sign_up_email)
