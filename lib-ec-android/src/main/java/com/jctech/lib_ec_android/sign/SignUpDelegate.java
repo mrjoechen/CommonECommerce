@@ -48,7 +48,7 @@ public class SignUpDelegate extends ECDelategate {
     void onClickSignUp() {
         if (checkForm()) {
             RestClient.builder()
-                    .url("http://192.168.56.1:8080/RestDataServer/api/user_profile.php")
+                    .url("")
                     .params("name", mName.getText().toString())
                     .params("email", mEmail.getText().toString())
                     .params("phone", mPhone.getText().toString())
