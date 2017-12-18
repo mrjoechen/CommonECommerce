@@ -7,6 +7,8 @@ import android.view.View;
 import com.bigkoo.convenientbanner.ConvenientBanner;
 import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.jctech.lib_core_android.delegate.ECDelategate;
+import com.jctech.lib_ui.launcher.LauncherHolderCreator;
+import com.jctech.lib_ui.launcher.ScrollLauncherTag;
 import com.jctech.lib_core_android.util.ECPreference;
 import com.jctech.lib_ec_android.R;
 

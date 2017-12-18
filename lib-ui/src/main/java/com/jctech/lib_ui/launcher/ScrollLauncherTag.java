@@ -1,4 +1,4 @@
-package com.jctech.lib_ec_android.launcher;
+package com.jctech.lib_ui.launcher;
 
 /**
  * Created by CHENQIAO on 2017/12/6.

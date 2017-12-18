@@ -1,4 +1,4 @@
-package com.jctech.lib_core_android.ui;
+package com.jctech.lib_core_android.ui.loader;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatDialog;

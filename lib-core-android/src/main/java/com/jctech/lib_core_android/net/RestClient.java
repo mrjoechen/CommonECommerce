@@ -8,8 +8,8 @@ import com.jctech.lib_core_android.net.callback.IRequest;
 import com.jctech.lib_core_android.net.callback.ISuccess;
 import com.jctech.lib_core_android.net.callback.RequestCallbacks;
 import com.jctech.lib_core_android.net.download.DownloadHandler;
-import com.jctech.lib_core_android.ui.ECLoader;
-import com.jctech.lib_core_android.ui.LoaderStyle;
+import com.jctech.lib_core_android.ui.loader.ECLoader;
+import com.jctech.lib_core_android.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;
@@ -18,7 +18,6 @@ import java.util.WeakHashMap;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.internal.http.HttpMethod;
 import retrofit2.Call;
 
 /**

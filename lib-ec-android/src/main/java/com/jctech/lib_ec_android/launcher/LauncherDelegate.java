@@ -7,7 +7,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 
+import com.jctech.lib_core_android.app.AccountManager;
+import com.jctech.lib_core_android.app.IUserChecker;
 import com.jctech.lib_core_android.delegate.ECDelategate;
+import com.jctech.lib_ui.launcher.ILauncherListener;
+import com.jctech.lib_ui.launcher.OnLauncherFinishTag;
+import com.jctech.lib_ui.launcher.ScrollLauncherTag;
 import com.jctech.lib_core_android.util.BaseTimerTask;
 import com.jctech.lib_core_android.util.ECPreference;
 import com.jctech.lib_ec_android.R;
@@ -30,6 +35,7 @@ public class LauncherDelegate extends ECDelategate implements BaseTimerTask.ITim
 
     private Timer mTimer = null;
     private int mCount = 5;
+    private ILauncherListener mILauncherListener = null;
 
     @OnClick(R2.id.tv_launcher_timer)
     void onClickTimerView() {
@@ -43,6 +49,14 @@ public class LauncherDelegate extends ECDelategate implements BaseTimerTask.ITim
         mTimer = new Timer();
         final BaseTimerTask task = new BaseTimerTask(this);
         mTimer.schedule(task, 0, 1000);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        if (activity instanceof ILauncherListener) {
+            mILauncherListener = (ILauncherListener) activity;
+        }
     }
 
     @Override
@@ -60,7 +74,22 @@ public class LauncherDelegate extends ECDelategate implements BaseTimerTask.ITim
         if (!ECPreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
             getSupportDelegate().start(new LauncherScrollDelegate(), SINGLETASK);
         } else {
-            //检查用户登录状态
+            //检查用户是否登录了APP
+            AccountManager.checkAccount(new IUserChecker() {
+                @Override
+                public void onSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
+                    }
+                }
+
+                @Override
+                public void onNotSignIn() {
+                    if (mILauncherListener != null) {
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
+                    }
+                }
+            });
 
         }
     }
@@ -77,6 +106,7 @@ public class LauncherDelegate extends ECDelategate implements BaseTimerTask.ITim
                         if (mTimer != null) {
                             mTimer.cancel();
                             mTimer = null;
+                            checkIsShowScroll();
                         }
                     }
                 }

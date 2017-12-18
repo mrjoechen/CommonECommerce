@@ -1,4 +1,4 @@
-package com.jctech.lib_core_android.ui;
+package com.jctech.lib_core_android.ui.loader;
 
 import android.content.Context;
 

@@ -1,4 +1,4 @@
-package com.jctech.lib_core_android.ui;
+package com.jctech.lib_core_android.ui.loader;
 
 /**
  * Created by CHENQIAO on 2017/11/23.

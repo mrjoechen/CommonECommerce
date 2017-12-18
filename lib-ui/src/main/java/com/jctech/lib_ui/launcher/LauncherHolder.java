@@ -1,4 +1,4 @@
-package com.jctech.lib_ec_android.launcher;
+package com.jctech.lib_ui.launcher;
 
 import android.content.Context;
 import android.support.v7.widget.AppCompatImageView;

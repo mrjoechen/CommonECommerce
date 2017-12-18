@@ -6,7 +6,7 @@ import com.jctech.lib_core_android.net.callback.IError;
 import com.jctech.lib_core_android.net.callback.IFailure;
 import com.jctech.lib_core_android.net.callback.IRequest;
 import com.jctech.lib_core_android.net.callback.ISuccess;
-import com.jctech.lib_core_android.ui.LoaderStyle;
+import com.jctech.lib_core_android.ui.loader.LoaderStyle;
 
 import java.io.File;
 import java.util.Map;

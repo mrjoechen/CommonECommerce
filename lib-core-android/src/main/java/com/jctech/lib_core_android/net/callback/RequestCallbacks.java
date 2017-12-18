@@ -2,8 +2,8 @@ package com.jctech.lib_core_android.net.callback;
 
 import android.os.Handler;
 
-import com.jctech.lib_core_android.ui.ECLoader;
-import com.jctech.lib_core_android.ui.LoaderStyle;
+import com.jctech.lib_core_android.ui.loader.ECLoader;
+import com.jctech.lib_core_android.ui.loader.LoaderStyle;
 
 import retrofit2.Call;
 import retrofit2.Callback;
