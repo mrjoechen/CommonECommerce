@@ -11,6 +11,7 @@ import android.view.View;
 import com.jctech.lib_core_android.delegate.ECDelategate;
 import com.jctech.lib_core_android.net.RestClient;
 import com.jctech.lib_core_android.net.callback.ISuccess;
+import com.jctech.lib_core_android.util.ECLogger;
 import com.jctech.lib_ec_android.R;
 import com.jctech.lib_ec_android.R2;
 
@@ -56,7 +57,8 @@ public class SignUpDelegate extends ECDelategate {
                     .success(new ISuccess() {
                         @Override
                         public void onSuccess(String response) {
-
+                            ECLogger.json("USER_PROFILE", response);
+                            SignHandler.onSignUp(response, mISignListener);
                         }
                     })
                     .build()
