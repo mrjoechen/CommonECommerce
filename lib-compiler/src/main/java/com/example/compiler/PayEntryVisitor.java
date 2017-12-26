@@ -15,7 +15,8 @@ import javax.lang.model.util.SimpleAnnotationValueVisitor7;
  * Created by CHENQIAO on 2017/12/26.
  */
 
-public class EntryVisitor extends SimpleAnnotationValueVisitor7<Void, Void> {
+public class PayEntryVisitor extends SimpleAnnotationValueVisitor7<Void, Void> {
+
 
     private Filer mFiler;
     private TypeMirror mTypeMirror;
@@ -42,13 +43,13 @@ public class EntryVisitor extends SimpleAnnotationValueVisitor7<Void, Void> {
 
     private void generateJavaCode() {
 
-        final TypeSpec targetActivity = TypeSpec.classBuilder("WXEntryActivity")
+        final TypeSpec targetActivity = TypeSpec.classBuilder("WXPayEntryActivity")
                 .addModifiers(Modifier.PUBLIC)
                 .addModifiers(Modifier.FINAL)
                 .superclass(TypeName.get(mTypeMirror))
                 .build();
         final JavaFile javaFile = JavaFile.builder(mPackage + "mwxapi", targetActivity)
-                .addFileComment("微信入口文件")
+                .addFileComment("微信支付入口文件")
                 .build();
 
         try {

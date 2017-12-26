@@ -52,6 +52,7 @@ public class ECProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
 
+        generateEntryCode(roundEnv);
         return false;
     }
 
@@ -73,6 +74,24 @@ public class ECProcessor extends AbstractProcessor {
                 }
             }
         }
+    }
+
+    private void generateEntryCode(RoundEnvironment env) {
+        final EntryVisitor entryVisitor =
+                new EntryVisitor();
+        scan(env, EntryGenerator.class, entryVisitor);
+    }
+
+    private void generatePayEntryCode(RoundEnvironment env) {
+        final PayEntryVisitor payEntryVisitor =
+                new PayEntryVisitor();
+        scan(env, PayGenerator.class, payEntryVisitor);
+    }
+
+    private void generateAppRegisterCode(RoundEnvironment env) {
+        final AppRegisterVisitor appRegisterVisitor =
+                new AppRegisterVisitor();
+        scan(env, AppRegisterGenerator.class, appRegisterVisitor);
     }
 
 }
