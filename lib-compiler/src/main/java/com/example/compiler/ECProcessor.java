@@ -2,7 +2,7 @@ package com.example.compiler;
 
 import com.example.annotations.AppRegisterGenerator;
 import com.example.annotations.EntryGenerator;
-import com.example.annotations.PayGenerator;
+import com.example.annotations.PayEntryGenerator;
 import com.google.auto.service.AutoService;
 
 import java.lang.annotation.Annotation;
@@ -45,7 +45,7 @@ public class ECProcessor extends AbstractProcessor {
         final Set<Class<? extends Annotation>> annotations = new LinkedHashSet<>();
 
         annotations.add(EntryGenerator.class);
-        annotations.add(PayGenerator.class);
+        annotations.add(PayEntryGenerator.class);
         annotations.add(AppRegisterGenerator.class);
         return annotations;
     }
@@ -87,7 +87,7 @@ public class ECProcessor extends AbstractProcessor {
     private void generatePayEntryCode(RoundEnvironment env) {
         final PayEntryVisitor payEntryVisitor =
                 new PayEntryVisitor(processingEnv.getFiler());
-        scan(env, PayGenerator.class, payEntryVisitor);
+        scan(env, PayEntryGenerator.class, payEntryVisitor);
     }
 
     private void generateAppRegisterCode(RoundEnvironment env) {

@@ -11,7 +11,7 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.TYPE)//声明注解使用在类上面
 @Retention(RetentionPolicy.SOURCE)//编译器在编译源码阶段处理
-public @interface PayGenerator {
+public @interface PayEntryGenerator {
 
     String packageName();
 
