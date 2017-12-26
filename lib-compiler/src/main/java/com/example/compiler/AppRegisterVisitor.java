@@ -22,7 +22,7 @@ public class AppRegisterVisitor extends SimpleAnnotationValueVisitor7<Void, Void
     private TypeMirror mTypeMirror;
     private String mPackage;
 
-    public void setmFiler(Filer mFiler) {
+    AppRegisterVisitor(Filer mFiler) {
         this.mFiler = mFiler;
     }
 

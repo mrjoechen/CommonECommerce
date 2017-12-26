@@ -22,7 +22,7 @@ public class PayEntryVisitor extends SimpleAnnotationValueVisitor7<Void, Void> {
     private TypeMirror mTypeMirror;
     private String mPackage;
 
-    public void setmFiler(Filer mFiler) {
+    PayEntryVisitor(Filer mFiler) {
         this.mFiler = mFiler;
     }
 
