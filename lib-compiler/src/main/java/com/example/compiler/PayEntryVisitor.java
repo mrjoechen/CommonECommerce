@@ -37,16 +37,16 @@ public class PayEntryVisitor extends SimpleAnnotationValueVisitor7<Void, Void> {
     @Override
     public Void visitType(TypeMirror t, Void aVoid) {
 
-        mTypeMirror = t;
+        generateJavaCode(t);
         return aVoid;
     }
 
-    private void generateJavaCode() {
+    private void generateJavaCode(TypeMirror typeMirror) {
 
         final TypeSpec targetActivity = TypeSpec.classBuilder("WXPayEntryActivity")
                 .addModifiers(Modifier.PUBLIC)
                 .addModifiers(Modifier.FINAL)
-                .superclass(TypeName.get(mTypeMirror))
+                .superclass(TypeName.get(typeMirror))
                 .build();
         final JavaFile javaFile = JavaFile.builder(mPackage + "mwxapi", targetActivity)
                 .addFileComment("微信支付入口文件")

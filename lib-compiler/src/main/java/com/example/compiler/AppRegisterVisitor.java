@@ -37,16 +37,16 @@ public class AppRegisterVisitor extends SimpleAnnotationValueVisitor7<Void, Void
     @Override
     public Void visitType(TypeMirror t, Void aVoid) {
 
-        mTypeMirror = t;
+        generateJavaCode(t);
         return aVoid;
     }
 
-    private void generateJavaCode() {
+    private void generateJavaCode(TypeMirror typeMirror) {
 
         final TypeSpec targetActivity = TypeSpec.classBuilder("AppRegister")
                 .addModifiers(Modifier.PUBLIC)
                 .addModifiers(Modifier.FINAL)
-                .superclass(TypeName.get(mTypeMirror))
+                .superclass(TypeName.get(typeMirror))
                 .build();
         final JavaFile javaFile = JavaFile.builder(mPackage + "mwxapi", targetActivity)
                 .addFileComment("微信广播接收器")
