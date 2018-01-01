@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.WeakHashMap;
 
+import okhttp3.Interceptor;
+
 /**
  * Created by CHENQIAO on 2017/8/27.
  */
@@ -18,8 +20,10 @@ import java.util.WeakHashMap;
 public final class Configurator {
 
 //    private static final WeakHashMap<String, Object> CONFIG = new WeakHashMap<>();//不使用是可以及时被回收
-    private static final HashMap<String, Object> CONFIGS = new HashMap<>();
+    private static final HashMap<Object, Object> CONFIGS = new HashMap<>();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList();
+    private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
+
 
     /**
      * 静态内部类，实现线程安全懒加载单例模式
@@ -43,7 +47,7 @@ public final class Configurator {
         return this;
     }
 
-    final HashMap<String, Object> getCONFIGS() {
+    final HashMap<Object, Object> getCONFIGS() {
         return CONFIGS;
     }
 
@@ -63,6 +67,33 @@ public final class Configurator {
 
     public final Configurator withIcons(IconFontDescriptor icon){
         ICONS.add(icon);
+        return this;
+    }
+
+    public final Configurator withInterceptor(Interceptor interceptor) {
+        INTERCEPTORS.add(interceptor);
+        CONFIGS.put(ConfigType.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
+
+    public final Configurator withInterceptors(ArrayList<Interceptor> interceptors) {
+        INTERCEPTORS.addAll(interceptors);
+        CONFIGS.put(ConfigType.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
+
+    public final Configurator withLoaderDelayed(long delayed) {
+        CONFIGS.put(ConfigType.LOADER_DELAYED, delayed);
+        return this;
+    }
+
+    public final Configurator withWeChatAppId(String appId) {
+        CONFIGS.put(ConfigType.WE_CHAT_APP_ID, appId);
+        return this;
+    }
+
+    public final Configurator withWeChatAppSecret(String appSecret) {
+        CONFIGS.put(ConfigType.WE_CHAT_APP_SECRET, appSecret);
         return this;
     }
 

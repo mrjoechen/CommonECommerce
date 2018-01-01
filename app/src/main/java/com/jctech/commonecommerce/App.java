@@ -3,6 +3,7 @@ package com.jctech.commonecommerce;
 import android.app.Application;
 
 import com.jctech.lib_core_android.app.EC;
+import com.jctech.lib_core_android.net.interceptor.DebugInterceptor;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 /**
@@ -17,6 +18,9 @@ public class App extends Application {
         EC.init(this)
                 .withIcons(new FontAwesomeModule())
                 .withApiHost("http://127.0.0.1")
+                .withInterceptor(new DebugInterceptor("test", R.raw.test))
+                .withWeChatAppId("你的微信AppKey")
+                .withWeChatAppSecret("你的微信AppSecret")
                 .configure();
     }
 }

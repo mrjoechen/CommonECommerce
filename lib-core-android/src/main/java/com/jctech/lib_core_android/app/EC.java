@@ -16,7 +16,7 @@ public final class EC {
 
     }
 
-    public static HashMap<String, Object> getConfigurations() {
+    public static HashMap<Object, Object> getConfigurations() {
         return Configurator.getInstance().getCONFIGS();
     }
 
