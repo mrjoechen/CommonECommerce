@@ -21,10 +21,10 @@ public final class EC {
     }
 
     public static Context getApplication() {
-        return getConfiguratation(ConfigType.APPLICATION_CONTEXT);
+        return getConfiguration(ConfigType.APPLICATION_CONTEXT);
     }
 
-    public static <T> T getConfiguratation(Enum<ConfigType> key) {
+    public static <T> T getConfiguration(Enum<ConfigType> key) {
         return Configurator.getInstance().getConfiguration(key);
     }
 }
