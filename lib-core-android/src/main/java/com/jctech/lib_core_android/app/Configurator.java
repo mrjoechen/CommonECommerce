@@ -1,5 +1,7 @@
 package com.jctech.lib_core_android.app;
 
+import android.app.Activity;
+
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 
@@ -94,6 +96,11 @@ public final class Configurator {
 
     public final Configurator withWeChatAppSecret(String appSecret) {
         CONFIGS.put(ConfigType.WE_CHAT_APP_SECRET, appSecret);
+        return this;
+    }
+
+    public final Configurator withActivity(Activity activity) {
+        CONFIGS.put(ConfigType.ACTIVITY, activity);
         return this;
     }
 
