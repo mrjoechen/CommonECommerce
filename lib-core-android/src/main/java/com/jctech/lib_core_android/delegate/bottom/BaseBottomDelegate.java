@@ -1,5 +1,6 @@
 package com.jctech.lib_core_android.delegate.bottom;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.KeyEvent;
@@ -7,27 +8,27 @@ import android.view.View;
 
 import com.jctech.lib_core_android.delegate.ECDelategate;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+
 /**
  * Created by CHENQIAO on 2018/1/6.
  */
 
-public class BaseBottomDelegate extends ECDelategate implements View.OnKeyListener {
+public abstract class BaseBottomDelegate extends ECDelategate  {
 
+    private final ArrayList<BottomItemDelegate> ITEM_DELEGATES = new ArrayList<>();
+    private final ArrayList<BottomTabBean> TAB_BEANS = new ArrayList<>();
+    private final LinkedHashMap<BottomTabBean, BottomItemDelegate> ITEMS = new LinkedHashMap<>();
+    private int mCurrentDelegate = 0;
+    private int mIndexDelegate = 0;
+    private int mClickedColor = Color.RED;
 
+    public abstract LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder itemBuilder);
 
 
     @Override
-    public Object setLayout() {
-        return null;
-    }
-
-    @Override
-    public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
-
-    }
-
-    @Override
-    public boolean onKey(View view, int i, KeyEvent keyEvent) {
-        return false;
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 }
