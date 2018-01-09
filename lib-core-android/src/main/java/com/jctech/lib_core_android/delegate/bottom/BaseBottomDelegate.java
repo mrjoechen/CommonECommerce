@@ -2,6 +2,7 @@ package com.jctech.lib_core_android.delegate.bottom;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
 import android.view.KeyEvent;
 import android.view.View;
@@ -26,6 +27,11 @@ public abstract class BaseBottomDelegate extends ECDelategate  {
 
     public abstract LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder itemBuilder);
 
+
+    public abstract int setIndexDelegate();
+
+    @ColorInt
+    public abstract int setClickedColor();
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
