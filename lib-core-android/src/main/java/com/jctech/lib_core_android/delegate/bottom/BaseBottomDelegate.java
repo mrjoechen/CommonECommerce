@@ -18,6 +18,7 @@ import java.util.LinkedHashMap;
 
 public abstract class BaseBottomDelegate extends ECDelategate  {
 
+
     private final ArrayList<BottomItemDelegate> ITEM_DELEGATES = new ArrayList<>();
     private final ArrayList<BottomTabBean> TAB_BEANS = new ArrayList<>();
     private final LinkedHashMap<BottomTabBean, BottomItemDelegate> ITEMS = new LinkedHashMap<>();
