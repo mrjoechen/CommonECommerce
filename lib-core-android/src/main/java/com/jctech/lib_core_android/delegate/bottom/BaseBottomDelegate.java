@@ -4,8 +4,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
-import android.view.KeyEvent;
-import android.view.View;
 
 import com.jctech.lib_core_android.delegate.ECDelategate;
 
