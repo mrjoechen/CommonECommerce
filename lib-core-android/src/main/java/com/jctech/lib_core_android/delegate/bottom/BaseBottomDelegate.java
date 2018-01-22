@@ -95,8 +95,29 @@ public abstract class BaseBottomDelegate extends ECDelategate implements View.On
 
     }
 
-    @Override
-    public void onClick(View view) {
 
+    private void resetColor() {
+        final int count = mBottomBar.getChildCount();
+        for (int i = 0; i < count; i++) {
+            final RelativeLayout item = (RelativeLayout) mBottomBar.getChildAt(i);
+            final IconTextView itemIcon = (IconTextView) item.getChildAt(0);
+            itemIcon.setTextColor(Color.GRAY);
+            final AppCompatTextView itemTitle = (AppCompatTextView) item.getChildAt(1);
+            itemTitle.setTextColor(Color.GRAY);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        final int tag = (int) v.getTag();
+        resetColor();
+        final RelativeLayout item = (RelativeLayout) v;
+        final IconTextView itemIcon = (IconTextView) item.getChildAt(0);
+        itemIcon.setTextColor(mClickedColor);
+        final AppCompatTextView itemTitle = (AppCompatTextView) item.getChildAt(1);
+        itemTitle.setTextColor(mClickedColor);
+        getSupportDelegate().showHideFragment(ITEM_DELEGATES.get(tag), ITEM_DELEGATES.get(mCurrentDelegate));
+        //注意先后顺序
+        mCurrentDelegate = tag;
     }
 }
