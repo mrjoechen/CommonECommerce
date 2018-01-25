@@ -50,7 +50,7 @@ public class BottomItemDelegate extends ECDelategate implements View.OnKeyListen
                 mExitTime = System.currentTimeMillis();
             } else {
                 _mActivity.finish();
-                if (mExitTime != 0){
+                if (mExitTime != 0) {
                     mExitTime = 0;
                 }
             }
