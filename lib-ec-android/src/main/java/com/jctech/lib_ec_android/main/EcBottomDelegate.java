@@ -19,7 +19,11 @@ public class EcBottomDelegate extends BaseBottomDelegate{
 
     @Override
     public LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder itemBuilder) {
-        return null;
+
+        final  LinkedHashMap<BottomTabBean, BottomItemDelegate> items = new LinkedHashMap<>();
+
+
+        return items;
     }
 
     @Override
