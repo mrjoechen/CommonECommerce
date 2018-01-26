@@ -4,6 +4,7 @@ import com.jctech.lib_core_android.delegate.bottom.BaseBottomDelegate;
 import com.jctech.lib_core_android.delegate.bottom.BottomItemDelegate;
 import com.jctech.lib_core_android.delegate.bottom.BottomTabBean;
 import com.jctech.lib_core_android.delegate.bottom.ItemBuilder;
+import com.jctech.lib_ec_android.main.index.IndexDelegate;
 
 import java.util.LinkedHashMap;
 
@@ -22,6 +23,10 @@ public class EcBottomDelegate extends BaseBottomDelegate{
 
         final  LinkedHashMap<BottomTabBean, BottomItemDelegate> items = new LinkedHashMap<>();
 
+        items.put(new BottomTabBean("", ""), new IndexDelegate());
+        items.put(new BottomTabBean("", ""), new IndexDelegate());
+        items.put(new BottomTabBean("", ""), new IndexDelegate());
+        items.put(new BottomTabBean("", ""), new IndexDelegate());
 
         return items;
     }
