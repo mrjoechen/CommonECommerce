@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.jctech.lib_core_android.activities.ProxyActivity;
 import com.jctech.lib_core_android.delegate.ECDelategate;
+import com.jctech.lib_ec_android.main.EcBottomDelegate;
 import com.jctech.lib_ec_android.sign.ISignListener;
 import com.jctech.lib_ec_android.sign.SignInDelegate;
 import com.jctech.lib_ui.launcher.ILauncherListener;
@@ -46,7 +47,7 @@ public class ExampleActivity extends ProxyActivity implements
         switch (tag) {
             case SIGNED:
                 Toast.makeText(this, "启动结束，用户登录了", Toast.LENGTH_LONG).show();
-                startWithPop(new ExampleDelegate());
+                startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
                 Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();
