@@ -68,6 +68,9 @@ public class SignInDelegate extends ECDelategate {
                     })
                     .build()
                     .post();
+
+            ECLogger.json("USER_PROFILE", "test response");
+            SignHandler.onSignIn("test response", mISignListener);
         }
     }
 

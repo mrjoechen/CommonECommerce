@@ -1,5 +1,7 @@
 package com.jctech.lib_ec_android.main;
 
+import android.graphics.Color;
+
 import com.jctech.lib_core_android.delegate.bottom.BaseBottomDelegate;
 import com.jctech.lib_core_android.delegate.bottom.BottomItemDelegate;
 import com.jctech.lib_core_android.delegate.bottom.BottomTabBean;
@@ -23,15 +25,16 @@ public class EcBottomDelegate extends BaseBottomDelegate{
 
         final  LinkedHashMap<BottomTabBean, BottomItemDelegate> items = new LinkedHashMap<>();
 
-        items.put(new BottomTabBean("", "主页"), new IndexDelegate());
-        items.put(new BottomTabBean("", "分类"), new IndexDelegate());
-        items.put(new BottomTabBean("", "发现"), new IndexDelegate());
-        items.put(new BottomTabBean("", "购物车"), new IndexDelegate());
-        items.put(new BottomTabBean("", "我的"), new IndexDelegate());
+        items.put(new BottomTabBean("{fa-home}", "主页"), new IndexDelegate());
+        items.put(new BottomTabBean("{fa-sort}", "分类"), new IndexDelegate());
+        items.put(new BottomTabBean("{fa-compass}", "发现"), new IndexDelegate());
+        items.put(new BottomTabBean("{fa-shopping-cart}", "购物车"), new IndexDelegate());
+        items.put(new BottomTabBean("{fa-user}", "我的"), new IndexDelegate());
 
 
         return itemBuilder.addItem(items).build();
     }
+
 
     @Override
     public int setIndexDelegate() {
@@ -40,6 +43,6 @@ public class EcBottomDelegate extends BaseBottomDelegate{
 
     @Override
     public int setClickedColor() {
-        return 0;
+        return Color.parseColor("#ffff8800");
     }
 }
