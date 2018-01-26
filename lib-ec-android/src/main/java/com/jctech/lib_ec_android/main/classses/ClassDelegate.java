@@ -1,4 +1,4 @@
-package com.jctech.lib_ec_android.main.index;
+package com.jctech.lib_ec_android.main.classses;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,11 +11,11 @@ import com.jctech.lib_ec_android.R;
  * Created by CHENQIAO on 2018/1/27.
  */
 
-public class IndexDelegate extends BottomItemDelegate{
+public class ClassDelegate extends BottomItemDelegate {
 
     @Override
     public Object setLayout() {
-        return R.layout.delegate_index;
+        return R.layout.delegate_class;
     }
 
     @Override
