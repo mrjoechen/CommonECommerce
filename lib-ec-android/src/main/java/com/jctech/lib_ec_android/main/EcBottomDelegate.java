@@ -23,10 +23,12 @@ public class EcBottomDelegate extends BaseBottomDelegate{
 
         final  LinkedHashMap<BottomTabBean, BottomItemDelegate> items = new LinkedHashMap<>();
 
-        items.put(new BottomTabBean("", ""), new IndexDelegate());
-        items.put(new BottomTabBean("", ""), new IndexDelegate());
-        items.put(new BottomTabBean("", ""), new IndexDelegate());
-        items.put(new BottomTabBean("", ""), new IndexDelegate());
+        items.put(new BottomTabBean("", "主页"), new IndexDelegate());
+        items.put(new BottomTabBean("", "分类"), new IndexDelegate());
+        items.put(new BottomTabBean("", "发现"), new IndexDelegate());
+        items.put(new BottomTabBean("", "购物车"), new IndexDelegate());
+        items.put(new BottomTabBean("", "我的"), new IndexDelegate());
+
 
         return items;
     }
