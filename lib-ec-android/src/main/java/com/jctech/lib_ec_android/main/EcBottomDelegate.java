@@ -30,7 +30,7 @@ public class EcBottomDelegate extends BaseBottomDelegate{
         items.put(new BottomTabBean("", "我的"), new IndexDelegate());
 
 
-        return items;
+        return itemBuilder.addItem(items).build();
     }
 
     @Override
