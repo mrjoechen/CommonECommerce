@@ -14,7 +14,7 @@ import java.util.LinkedHashMap;
  * Created by CHENQIAO on 2018/1/26.
  */
 
-public class EcBottomDelegate extends BaseBottomDelegate{
+public class EcBottomDelegate extends BaseBottomDelegate {
     @Override
     public Object setLayout() {
         return null;
@@ -23,7 +23,7 @@ public class EcBottomDelegate extends BaseBottomDelegate{
     @Override
     public LinkedHashMap<BottomTabBean, BottomItemDelegate> setItems(ItemBuilder itemBuilder) {
 
-        final  LinkedHashMap<BottomTabBean, BottomItemDelegate> items = new LinkedHashMap<>();
+        final LinkedHashMap<BottomTabBean, BottomItemDelegate> items = new LinkedHashMap<>();
 
         items.put(new BottomTabBean("{fa-home}", "主页"), new IndexDelegate());
         items.put(new BottomTabBean("{fa-sort}", "分类"), new IndexDelegate());
