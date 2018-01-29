@@ -15,6 +15,8 @@ import java.util.LinkedHashMap;
  */
 
 public class EcBottomDelegate extends BaseBottomDelegate {
+
+
     @Override
     public Object setLayout() {
         return null;
