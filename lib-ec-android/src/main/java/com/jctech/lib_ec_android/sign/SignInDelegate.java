@@ -31,6 +31,7 @@ public class SignInDelegate extends ECDelategate {
         return R.layout.delegate_sign_in;
     }
 
+
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
 
