@@ -25,6 +25,7 @@ import butterknife.OnClick;
 
 public class SignInDelegate extends ECDelategate {
 
+
     @Override
     public Object setLayout() {
         return R.layout.delegate_sign_in;
