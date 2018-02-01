@@ -13,6 +13,7 @@ import com.jctech.lib_ec_android.database.UserProfile;
 public class SignHandler {
 
     public static void onSignIn(String response, ISignListener signListener) {
+
         final JSONObject profileJson = JSON.parseObject(response).getJSONObject("data");
         final long userId = profileJson.getLong("userId");
         final String name = profileJson.getString("name");
