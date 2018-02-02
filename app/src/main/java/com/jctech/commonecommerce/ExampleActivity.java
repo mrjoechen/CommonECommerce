@@ -38,6 +38,7 @@ public class ExampleActivity extends ProxyActivity implements
 
     @Override
     public void onSignUpSuccess() {
+
         Toast.makeText(this, "注册成功", Toast.LENGTH_LONG).show();
         //可以进行收集信息，统计信息等操作
     }
