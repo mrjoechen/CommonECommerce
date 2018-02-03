@@ -15,6 +15,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         EC.init(this)
                 .withIcons(new FontAwesomeModule())
                 .withApiHost("http://127.0.0.1")
