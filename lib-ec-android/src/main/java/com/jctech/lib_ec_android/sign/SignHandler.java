@@ -31,6 +31,7 @@ public class SignHandler {
 
 
     public static void onSignUp(String response, ISignListener signListener) {
+
         final JSONObject profileJson = JSON.parseObject(response).getJSONObject("data");
         final long userId = profileJson.getLong("userId");
         final String name = profileJson.getString("name");
