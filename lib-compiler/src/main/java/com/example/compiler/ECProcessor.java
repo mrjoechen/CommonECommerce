@@ -42,8 +42,8 @@ public class ECProcessor extends AbstractProcessor {
     }
 
     private Set<Class<? extends Annotation>> getSupportedAnnotation() {
-        final Set<Class<? extends Annotation>> annotations = new LinkedHashSet<>();
 
+        final Set<Class<? extends Annotation>> annotations = new LinkedHashSet<>();
         annotations.add(EntryGenerator.class);
         annotations.add(PayEntryGenerator.class);
         annotations.add(AppRegisterGenerator.class);
@@ -79,18 +79,21 @@ public class ECProcessor extends AbstractProcessor {
     }
 
     private void generateEntryCode(RoundEnvironment env) {
+
         final EntryVisitor entryVisitor =
                 new EntryVisitor(processingEnv.getFiler());
         scan(env, EntryGenerator.class, entryVisitor);
     }
 
     private void generatePayEntryCode(RoundEnvironment env) {
+
         final PayEntryVisitor payEntryVisitor =
                 new PayEntryVisitor(processingEnv.getFiler());
         scan(env, PayEntryGenerator.class, payEntryVisitor);
     }
 
     private void generateAppRegisterCode(RoundEnvironment env) {
+
         final AppRegisterVisitor appRegisterVisitor =
                 new AppRegisterVisitor(processingEnv.getFiler());
         scan(env, AppRegisterGenerator.class, appRegisterVisitor);
