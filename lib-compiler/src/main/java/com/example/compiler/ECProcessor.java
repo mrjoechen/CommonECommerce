@@ -57,6 +57,7 @@ public class ECProcessor extends AbstractProcessor {
         generatePayEntryCode(roundEnv);
         generateAppRegisterCode(roundEnv);
         return false;
+
     }
 
     private void scan(RoundEnvironment env,
