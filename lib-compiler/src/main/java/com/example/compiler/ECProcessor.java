@@ -48,6 +48,7 @@ public class ECProcessor extends AbstractProcessor {
         annotations.add(PayEntryGenerator.class);
         annotations.add(AppRegisterGenerator.class);
         return annotations;
+
     }
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
