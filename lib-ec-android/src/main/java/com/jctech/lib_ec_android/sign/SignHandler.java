@@ -20,12 +20,13 @@ public class SignHandler {
         final String avatar = profileJson.getString("avatar");
         final String gender = profileJson.getString("gender");
         final String address = profileJson.getString("address");
+        AccountManager.setSignState(true);
 
         final UserProfile profile = new UserProfile(userId, name, avatar, gender, address);
         DatabasesManager.getInstance().getDao().insert(profile);
         //已经注册并登录成功了
-        AccountManager.setSignState(true);
         signListener.onSignInSuccess();
+
     }
 
 
