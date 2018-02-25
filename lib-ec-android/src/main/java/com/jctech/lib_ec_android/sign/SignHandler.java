@@ -26,7 +26,6 @@ public class SignHandler {
         DatabasesManager.getInstance().getDao().insert(profile);
         //已经注册并登录成功了
         signListener.onSignInSuccess();
-
     }
 
 
