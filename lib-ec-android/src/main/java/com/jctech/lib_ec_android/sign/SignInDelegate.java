@@ -41,6 +41,7 @@ public class SignInDelegate extends ECDelategate {
     TextInputEditText mEmail = null;
     @BindView(R2.id.edit_sign_in_password)
     TextInputEditText mPassword = null;
+
     private ISignListener mISignListener = null;
 
     @Override
